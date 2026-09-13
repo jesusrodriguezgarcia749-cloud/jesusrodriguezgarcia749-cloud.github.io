@@ -4,121 +4,317 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aula Virtual — Jesús Rodríguez García</title>
+
+<!-- SEO -->
 <meta name="description" content="Plataformas educativas de Jesús Rodríguez García: Bases Culinarias, Expresión Oral y Escrita, y Origen de las Cocinas. Compendios, actividades, exámenes y seguimiento de calificaciones para cada asignatura.">
 <meta name="author" content="Jesús Rodríguez García">
 <link rel="canonical" href="https://jesusrodriguezgarcia749-cloud.github.io/">
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Aula Virtual — Jesús Rodríguez García">
 <meta property="og:description" content="Plataformas educativas de Jesús Rodríguez García: Bases Culinarias, Expresión Oral y Escrita, y Origen de las Cocinas.">
 <meta property="og:url" content="https://jesusrodriguezgarcia749-cloud.github.io/">
 <meta property="og:image" content="https://jesusrodriguezgarcia749-cloud.github.io/assets/portada.png">
+<meta property="og:site_name" content="Aula Virtual — Jesús Rodríguez García">
 <meta property="og:locale" content="es_MX">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jesusrodriguezgarcia749-cloud.github.io/assets/portada.png">
+<!-- /SEO -->
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-180.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --charcoal:#231F1A; --ink-soft:#5C544A; --cream:#F4EFE4; --paper:#FBF8F1;
-    --saffron:#C98A2C; --saffron-dark:#8A5E12; --sage:#4A5D3C; --paprika:#A63D2F;
-    --line:#E0D9CB; --font-display:'Fraunces',Georgia,serif; --font-body:'Public Sans',-apple-system,Arial,sans-serif;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0; background:var(--cream); color:var(--charcoal); font-family:var(--font-body); line-height:1.55;}
-  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+/* ============================================================
+   Hub Aula Virtual — hoja de estilos propia y autocontenida.
+   No depende de ningún CSS externo, para que la portada nunca
+   se vea rota si falta un archivo.
+   ============================================================ */
 
-  header.masthead{padding:72px 0 0; border-bottom:1px solid var(--line);}
-  .eyebrow{font-family:var(--font-body); font-size:.8rem; letter-spacing:.02em; color:var(--ink-soft); margin:0 0 10px;}
-  h1{font-family:var(--font-display); font-weight:600; font-size:clamp(2.3rem,7vw,3.4rem); line-height:1.08; margin:0 0 18px; color:var(--charcoal);}
-  .lead{font-size:1.05rem; color:var(--ink-soft); max-width:56ch; margin:0 0 40px;}
-  .portada{width:100%; display:block; border-radius:10px 10px 0 0;}
+:root{
+  --cream:      #F4EFE4;
+  --card:       #FBF8F1;
+  --white:      #FFFFFF;
+  --charcoal:   #231F1A;
+  --ink-soft:   #5C544A;
+  --line:       #E0D9CB;
+  --gold:       #C98A2C;
+  --gold-dark:  #8A5E12;
+  --sage:       #6B7A5E;
+  --paprika:    #A63D2F;
+  --radius:     18px;
+  --shadow:     0 2px 14px rgba(0,0,0,0.07);
+  --shadow-alta:0 8px 28px rgba(0,0,0,0.12);
+  --f-display:  'Fraunces', Georgia, serif;
+  --f-body:     'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-  main{padding:44px 0 90px;}
-  .seccion-titulo{font-family:var(--font-display); font-size:1.3rem; font-weight:600; margin:0 0 6px;}
-  .seccion-sub{color:var(--ink-soft); font-size:.92rem; margin:0 0 30px; max-width:56ch;}
+*{ box-sizing:border-box; }
 
-  .directorio{border-top:1px solid var(--line);}
-  .materia{
-    display:block; text-decoration:none; color:inherit;
-    padding:26px 0; border-bottom:1px solid var(--line);
-    position:relative;
-  }
-  .materia.activa:hover .materia-nombre{color:var(--saffron-dark);}
-  .materia-top{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:6px;}
-  .materia-nombre{font-family:var(--font-display); font-size:1.35rem; font-weight:600; color:var(--charcoal); transition:color .15s ease;}
-  .estado{font-size:.72rem; font-weight:600; letter-spacing:.02em; padding:3px 11px; border-radius:99px; white-space:nowrap; flex-shrink:0;}
-  .estado.activa{background:rgba(74,93,60,.13); color:var(--sage);}
-  .estado.proxima{background:rgba(92,84,74,.10); color:var(--ink-soft);}
-  .materia-desc{color:var(--ink-soft); font-size:.92rem; margin:0 0 10px; max-width:60ch;}
-  .materia-meta{font-size:.78rem; color:var(--ink-soft);}
-  .materia-meta span + span::before{content:"·"; margin:0 8px;}
-  .materia.inactiva{cursor:default;}
-  .materia.inactiva .materia-nombre{color:var(--ink-soft);}
-  .flecha{position:absolute; right:0; top:50%; transform:translateY(-50%); font-size:1.4rem; color:var(--line); transition:transform .15s ease, color .15s ease;}
-  .materia.activa:hover .flecha{transform:translateY(-50%) translateX(4px); color:var(--saffron);}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--charcoal);
+  font-family:var(--f-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
 
-  footer{border-top:1px solid var(--line); padding:30px 0 50px;}
-  footer p{color:var(--ink-soft); font-size:.82rem; margin:0;}
+.wrap{ max-width:860px; margin:0 auto; padding:0 22px; }
+
+/* ---------- Encabezado ---------- */
+.site-header{
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+.header-inner{ display:flex; align-items:center; gap:12px; }
+.escudo{ width:40px; height:40px; object-fit:contain; flex-shrink:0; }
+.brand-text{
+  font-family:var(--f-display); font-weight:700;
+  font-size:1.05rem; line-height:1.2;
+}
+
+/* ---------- Portada ---------- */
+.hero{
+  padding:52px 0 40px;
+  text-align:center;
+}
+.eyebrow{
+  font-size:.72rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold-dark);
+  margin:0 0 10px;
+}
+.hero h1{
+  font-family:var(--f-display); font-weight:700;
+  font-size:clamp(2rem, 7vw, 3.1rem);
+  line-height:1.1; margin:0 0 16px;
+}
+.hero-sub{
+  font-size:1.02rem; color:var(--ink-soft);
+  max-width:34em; margin:0 auto 32px;
+}
+.portada{
+  width:100%; max-width:560px; height:auto;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-alta);
+  display:block; margin:0 auto;
+}
+
+/* ---------- Secciones ---------- */
+.seccion{ padding:46px 0 10px; }
+.seccion-eyebrow{
+  font-size:.7rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold-dark);
+  margin:0 0 6px;
+}
+.seccion h2{
+  font-family:var(--f-display); font-size:1.55rem;
+  margin:0 0 8px;
+}
+.seccion-sub{
+  color:var(--ink-soft); font-size:.95rem;
+  margin:0 0 26px; max-width:46em;
+}
+
+/* ---------- Tarjetas de materia ---------- */
+.materias{
+  display:grid; gap:16px;
+  grid-template-columns:1fr;
+}
+.materia{
+  display:block; text-decoration:none; color:inherit;
+  background:var(--card); border-radius:var(--radius);
+  border:1.5px solid var(--line);
+  border-left:6px solid var(--acento, var(--gold));
+  box-shadow:var(--shadow);
+  padding:24px 24px 20px;
+  transition:transform .15s ease, box-shadow .18s ease;
+}
+.materia:hover{ transform:translateY(-3px); box-shadow:var(--shadow-alta); }
+.materia:active{ transform:scale(0.99); }
+
+.materia-top{
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:10px; flex-wrap:wrap;
+}
+.materia-nombre{
+  font-family:var(--f-display); font-weight:700;
+  font-size:1.3rem; line-height:1.2;
+  color:var(--acento, var(--charcoal));
+  margin:0; flex:1; min-width:0;
+}
+.chip{
+  font-size:.66rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:4px 12px; border-radius:999px;
+  background:rgba(107,122,94,.16); color:var(--sage);
+  white-space:nowrap;
+}
+.materia-desc{
+  font-size:.94rem; color:var(--ink-soft);
+  margin:0 0 16px;
+}
+.materia-pie{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding-top:14px; border-top:1px solid var(--line);
+  font-size:.8rem; color:var(--ink-soft);
+}
+.materia-meta span + span::before{
+  content:'·'; margin:0 8px; color:var(--line);
+}
+.materia-flecha{
+  font-weight:700; color:var(--acento, var(--gold-dark));
+  font-size:1.1rem; flex-shrink:0;
+}
+
+/* ---------- Acceso institucional ---------- */
+.institucional{
+  margin-top:44px; padding-top:34px;
+  border-top:1px solid var(--line);
+}
+.institucional .seccion-eyebrow{ color:var(--ink-soft); }
+.institucional h2{ font-size:1.15rem; }
+.acceso{
+  display:flex; align-items:center; gap:16px;
+  text-decoration:none; color:inherit;
+  background:var(--charcoal); color:var(--cream);
+  border-radius:14px; padding:20px 22px;
+  transition:transform .15s ease, opacity .15s ease;
+}
+.acceso:hover{ transform:translateY(-2px); opacity:.94; }
+.acceso:active{ transform:scale(0.99); }
+.acceso-icono{
+  width:42px; height:42px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(201,138,44,.2); color:var(--gold);
+  border-radius:10px;
+  font-family:var(--f-display); font-weight:700; font-size:.95rem;
+}
+.acceso-texto{ flex:1; min-width:0; }
+.acceso-nombre{
+  font-family:var(--f-display); font-weight:700;
+  font-size:1.02rem; margin:0 0 2px;
+}
+.acceso-sub{
+  font-size:.8rem; color:#B9B0A0; margin:0;
+}
+.acceso-flecha{ color:var(--gold); font-weight:700; flex-shrink:0; }
+
+/* ---------- Pie ---------- */
+.site-footer{
+  margin-top:56px; padding:26px 0 40px;
+  border-top:1px solid var(--line);
+  text-align:center;
+}
+.site-footer p{
+  margin:0; font-size:.84rem; color:var(--ink-soft);
+}
+
+/* ---------- Pantallas anchas ---------- */
+@media (min-width:680px){
+  .materias{ grid-template-columns:repeat(2, 1fr); }
+  .materia:first-child{ grid-column:1 / -1; }
+  .brand-text{ font-size:1.2rem; }
+}
 </style>
 </head>
 <body>
 
-<header class="masthead">
-  <div class="wrap">
-    <p class="eyebrow">Aula Virtual</p>
-    <h1>Jesús Rodríguez García</h1>
-    <p class="lead">Plataformas de estudio y evaluación, cada una con su propio compendio, actividades, exámenes y seguimiento de calificaciones.</p>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <img src="assets/escudo.png" alt="" class="escudo" onerror="this.style.display='none'">
+    <span class="brand-text">Aula Virtual</span>
   </div>
-  <img class="portada" src="assets/portada.png" alt="Ilustración con un cuchillo de chef, un batidor y una olla de cobre formando las iniciales JRG, rodeados de libros, una pluma y un globo terráqueo, sobre una mesa de madera con el nombre Jesús Rodríguez García.">
 </header>
 
 <main>
-  <div class="wrap">
-    <p class="seccion-titulo">Asignaturas</p>
-    <p class="seccion-sub">Cada plataforma vive de forma independiente, con sus propias reglas y su propio panel docente.</p>
 
-    <div class="directorio">
+  <!-- ===================== PORTADA ===================== -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Aula Virtual</p>
+      <h1>Jesús Rodríguez García</h1>
+      <p class="hero-sub">Plataformas de estudio y evaluación, cada una con su propio compendio, actividades, exámenes y seguimiento de calificaciones.</p>
+      <img src="assets/portada.png" class="portada"
+           alt="Ilustración con un cuchillo de chef, un batidor y una olla de cobre formando las iniciales JRG, rodeados de libros, una pluma y un globo terráqueo, sobre una mesa de madera con el nombre Jesús Rodríguez García."
+           onerror="this.style.display='none'">
+    </div>
+  </section>
 
-      <a class="materia activa" href="https://jesusrodriguezgarcia749-cloud.github.io/bases-culinarias/">
-        <div class="materia-top">
-          <span class="materia-nombre">Bases Culinarias</span>
-          <span class="estado activa">Activa</span>
-        </div>
-        <p class="materia-desc">Fundamentos de la cocina profesional: géneros culinarios, mise en place, medición y estandarización, y termodinámica de la cocción.</p>
-        <p class="materia-meta"><span>ITES René Descartes</span><span>Artes Culinarias</span></p>
-        <span class="flecha">→</span>
-      </a>
+  <!-- ===================== ASIGNATURAS ===================== -->
+  <section class="seccion">
+    <div class="wrap">
+      <p class="seccion-eyebrow">Asignaturas</p>
+      <h2>Elige tu plataforma</h2>
+      <p class="seccion-sub">Cada plataforma vive de forma independiente, con sus propias reglas y su propio panel docente.</p>
 
-      <a class="materia activa" href="https://jesusrodriguezgarcia749-cloud.github.io/expresion-oral-escrita/">
-        <div class="materia-top">
-          <span class="materia-nombre">Expresión Oral y Escrita</span>
-          <span class="estado activa">Activa</span>
-        </div>
-        <p class="materia-desc">Comunicación, ortografía, redacción y oratoria — con el proyecto de cuatrimestre "Mi Voz, Mi Historia" como eje del curso.</p>
-        <p class="materia-meta"><span>ITES René Descartes</span><span>Ciencias de la Comunicación</span></p>
-        <span class="flecha">→</span>
-      </a>
+      <div class="materias">
 
-      <a class="materia activa" href="https://jesusrodriguezgarcia749-cloud.github.io/origen-de-las-cocinas/">
-        <div class="materia-top">
-          <span class="materia-nombre">Origen de las Cocinas</span>
-          <span class="estado activa">Activa</span>
-        </div>
-        <p class="materia-desc">Historia, tipología y geografía de la gastronomía a través de sus orígenes culturales — de Roma y la Edad Media a las cocinas del mundo actual.</p>
-        <p class="materia-meta"><span>ITES René Descartes</span><span>Artes Culinarias</span></p>
-        <span class="flecha">→</span>
-      </a>
+        <a class="materia" style="--acento:#C98A2C" href="https://jesusrodriguezgarcia749-cloud.github.io/bases-culinarias/">
+          <div class="materia-top">
+            <h3 class="materia-nombre">Bases Culinarias</h3>
+            <span class="chip">Activa</span>
+          </div>
+          <p class="materia-desc">Fundamentos de la cocina profesional: géneros culinarios, mise en place, medición y estandarización, y termodinámica de la cocción.</p>
+          <div class="materia-pie">
+            <span class="materia-meta"><span>ITES René Descartes</span><span>Artes Culinarias</span></span>
+            <span class="materia-flecha">→</span>
+          </div>
+        </a>
+
+        <a class="materia" style="--acento:#A63D2F" href="https://jesusrodriguezgarcia749-cloud.github.io/expresion-oral-escrita/">
+          <div class="materia-top">
+            <h3 class="materia-nombre">Expresión Oral y Escrita</h3>
+            <span class="chip">Activa</span>
+          </div>
+          <p class="materia-desc">Comunicación, ortografía, redacción y oratoria — con el proyecto de cuatrimestre "Mi Voz, Mi Historia" como eje del curso.</p>
+          <div class="materia-pie">
+            <span class="materia-meta"><span>ITES René Descartes</span><span>Ciencias de la Comunicación</span></span>
+            <span class="materia-flecha">→</span>
+          </div>
+        </a>
+
+        <a class="materia" style="--acento:#6B7A5E" href="https://jesusrodriguezgarcia749-cloud.github.io/origen-de-las-cocinas/">
+          <div class="materia-top">
+            <h3 class="materia-nombre">Origen de las Cocinas</h3>
+            <span class="chip">Activa</span>
+          </div>
+          <p class="materia-desc">Historia, tipología y geografía de la gastronomía a través de sus orígenes culturales — de Roma y la Edad Media a las cocinas del mundo actual.</p>
+          <div class="materia-pie">
+            <span class="materia-meta"><span>ITES René Descartes</span><span>Artes Culinarias</span></span>
+            <span class="materia-flecha">→</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- ============ ACCESO INSTITUCIONAL ============ -->
+      <div class="institucional">
+        <p class="seccion-eyebrow">Acceso institucional</p>
+        <h2>Solo personal autorizado</h2>
+        <p class="seccion-sub">Consulta de calificaciones y reportes por alumno. Requiere cuenta institucional.</p>
+
+        <a class="acceso" href="https://jesusrodriguezgarcia749-cloud.github.io/coordinacion-academica-ites/">
+          <span class="acceso-icono">CA</span>
+          <span class="acceso-texto">
+            <span class="acceso-nombre">Coordinación Académica</span>
+            <span class="acceso-sub">Acceso restringido · requiere credenciales</span>
+          </span>
+          <span class="acceso-flecha">→</span>
+        </a>
+      </div>
 
     </div>
-  </div>
+  </section>
+
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <p>Aula Virtual · Jesús Rodríguez García · LudoMente Studio</p>
   </div>
