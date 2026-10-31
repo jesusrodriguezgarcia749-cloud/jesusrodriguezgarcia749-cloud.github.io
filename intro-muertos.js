@@ -7,18 +7,11 @@
 // papel picado y veladoras, aparece «Día de Muertos» y a los pocos
 // segundos todo se desvanece y queda la página normal.
 //
-// · Se ve una vez al día en cada navegador (no cansa).
+// · Aparece cada vez que se abre la página, durante toda la temporada.
 // · Se salta tocando la pantalla, con el botón «Saltar» o con Esc.
-// · No aparece si el sistema pide reducir animaciones.
-// · Para verla a propósito: agrega ?intro a la dirección.
 // ============================================================
 (function () {
   'use strict';
-  const CLAVE = 'intro_muertos_visto';
-  const hoy = new Date().toISOString().slice(0, 10);
-  const forzar = /[?&]intro\b/.test(location.search);
-  try { if (!forzar && localStorage.getItem(CLAVE) === hoy) return; } catch (e) { /* sin almacenamiento */ }
-  if (!forzar && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // ---------- La calavera (dibujo original en SVG) ----------
   const flor = (x, y, r, c1, c2) => `<g transform="translate(${x} ${y})">${[0, 45, 90, 135, 180, 225, 270, 315].map(a => `<ellipse rx="${r * .42}" ry="${r}" fill="${c1}" transform="rotate(${a}) translate(0 ${-r * .75})"/>`).join('')}<circle r="${r * .55}" fill="${c2}"/></g>`;
@@ -174,7 +167,6 @@
     let cerrado = false;
     const cerrar = () => {
       if (cerrado) return; cerrado = true; t.forEach(clearTimeout);
-      try { localStorage.setItem(CLAVE, hoy); } catch (e) { /* nada */ }
       capa.classList.add('sale');
       setTimeout(() => { capa.remove(); est.remove(); document.documentElement.style.overflow = ''; document.removeEventListener('keydown', tecla); }, 800);
     };

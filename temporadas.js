@@ -14,9 +14,9 @@
 //     <script src="js/temporadas.js"></script>
 // (o "temporadas.js" si está en la raíz del repo)
 //
-// El visitante puede apagarlo con el botón × de la cinta; la
-// preferencia se recuerda en ese navegador hasta que empiece la
-// siguiente temporada.
+// La cinta y la lluvia se ven siempre durante la temporada (no se
+// pueden cerrar). Si la temporada tiene «intro», se carga además su
+// entrada animada cada vez que se abre la página.
 // ============================================================
 
 (function () {
@@ -43,6 +43,7 @@
       emojis: ['💀', '🕯️', '🌼', '🍬', '🎃'],
       colorCinta: '#5B2C6F',
       colorTexto: '#FFF4D6',
+      brillo: '#F28C1B',          // las piezas cercanas brillan como veladoras
       intro: 'intro-muertos.js',   // entrada animada: calavera que cae, papel picado y veladoras
     },
     {
@@ -80,8 +81,7 @@
   ];
 
   // ---------- Ajustes generales ----------
-  const CANTIDAD_ELEMENTOS = 14;   // cuántos caen a la vez
-  const CLAVE_APAGADO = 'temporada_apagada';
+  const CANTIDAD_ELEMENTOS = 24;   // cuántos caen a la vez
 
   // ---------- ¿Qué temporada toca hoy? ----------
   function temporadaDeHoy() {
@@ -100,10 +100,6 @@
   const temporada = temporadaDeHoy();
   if (!temporada) return; // fuera de temporada: no se hace nada
 
-  // Si el visitante la apagó para ESTA temporada, se respeta.
-  try {
-    if (localStorage.getItem(CLAVE_APAGADO) === temporada.id) return;
-  } catch (e) { /* si no hay localStorage, seguimos normal */ }
 
   // Respeta a quien pidió al sistema reducir animaciones.
   const sinMovimiento = window.matchMedia &&
@@ -115,37 +111,36 @@
     .temporada-cinta{
       position:relative; z-index:60;
       display:flex; align-items:center; justify-content:center; gap:10px;
-      padding:9px 46px 9px 16px;
+      padding:9px 16px;
       font-family:'Public Sans', -apple-system, sans-serif;
       font-size:.88rem; font-weight:600; letter-spacing:.02em;
       text-align:center; line-height:1.35;
     }
     .temporada-cinta-emojis{ font-size:1rem; letter-spacing:.12em; }
-    .temporada-cerrar{
-      position:absolute; right:10px; top:50%; transform:translateY(-50%);
-      width:28px; height:28px; border:0; border-radius:50%;
-      background:rgba(255,255,255,.18); color:inherit;
-      font-size:1rem; line-height:1; cursor:pointer;
-      display:flex; align-items:center; justify-content:center;
-      transition:background .15s ease;
-    }
-    .temporada-cerrar:hover{ background:rgba(255,255,255,.32); }
 
     .temporada-lluvia{
       position:fixed; inset:0; z-index:1;
       pointer-events:none; overflow:hidden;
     }
     .temporada-pieza{
-      position:absolute; top:-40px;
+      position:absolute; top:-60px;
       font-size:1.4rem; line-height:1;
-      opacity:.55;
       animation-name:temporada-caer;
       animation-timing-function:linear;
       animation-iteration-count:infinite;
     }
+    .temporada-pieza > span{
+      display:inline-block;
+      animation:temporada-mece var(--mece,3s) ease-in-out infinite alternate;
+      filter:drop-shadow(0 0 6px var(--brillo,transparent));
+    }
     @keyframes temporada-caer{
-      0%   { transform:translateY(-40px) rotate(0deg); }
-      100% { transform:translateY(105vh) rotate(360deg); }
+      0%   { transform:translateY(-60px); }
+      100% { transform:translateY(110vh); }
+    }
+    @keyframes temporada-mece{
+      0%   { transform:translateX(calc(var(--lado,30px) * -1)) rotate(-25deg) scale(.9); }
+      100% { transform:translateX(var(--lado,30px)) rotate(25deg) scale(1.1); }
     }
     @media print{
       .temporada-cinta, .temporada-lluvia{ display:none !important; }
@@ -166,14 +161,6 @@
       `<span>${temporada.mensaje}</span>` +
       `<span class="temporada-cinta-emojis">${emojis}</span>`;
 
-    const cerrar = document.createElement('button');
-    cerrar.className = 'temporada-cerrar';
-    cerrar.type = 'button';
-    cerrar.setAttribute('aria-label', 'Ocultar decoración de temporada');
-    cerrar.textContent = '×';
-    cerrar.addEventListener('click', apagar);
-    cinta.appendChild(cerrar);
-
     document.body.insertBefore(cinta, document.body.firstChild);
     return cinta;
   }
@@ -187,12 +174,20 @@
     for (let i = 0; i < CANTIDAD_ELEMENTOS; i++) {
       const pieza = document.createElement('span');
       pieza.className = 'temporada-pieza';
-      pieza.textContent = temporada.emojis[i % temporada.emojis.length];
+      const dentro = document.createElement('span');
+      dentro.textContent = temporada.emojis[i % temporada.emojis.length];
+      pieza.appendChild(dentro);
+      // Unas cerca (grandes, rápidas, nítidas) y otras lejos (chicas, lentas, tenues): da profundidad.
+      const cerca = Math.random();
       pieza.style.left = Math.random() * 100 + '%';
-      pieza.style.fontSize = (1.1 + Math.random() * 1.1).toFixed(2) + 'rem';
-      pieza.style.animationDuration = (9 + Math.random() * 9).toFixed(1) + 's';
-      pieza.style.animationDelay = (Math.random() * 10).toFixed(1) + 's';
-      pieza.style.opacity = (0.35 + Math.random() * 0.35).toFixed(2);
+      pieza.style.fontSize = (1 + cerca * 1.6).toFixed(2) + 'rem';
+      pieza.style.animationDuration = (16 - cerca * 8 + Math.random() * 3).toFixed(1) + 's';
+      pieza.style.animationDelay = (-Math.random() * 16).toFixed(1) + 's';
+      pieza.style.opacity = (0.4 + cerca * 0.5).toFixed(2);
+      dentro.style.setProperty('--lado', (15 + Math.random() * 45).toFixed(0) + 'px');
+      dentro.style.setProperty('--mece', (2 + Math.random() * 2.5).toFixed(1) + 's');
+      dentro.style.animationDelay = (-Math.random() * 4).toFixed(1) + 's';
+      if (temporada.brillo && cerca > 0.6) dentro.style.setProperty('--brillo', temporada.brillo);
       capa.appendChild(pieza);
     }
 
@@ -200,15 +195,8 @@
     return capa;
   }
 
-  // ---------- Apagar ----------
   let cinta = null;
   let lluvia = null;
-
-  function apagar() {
-    if (cinta) cinta.remove();
-    if (lluvia) lluvia.remove();
-    try { localStorage.setItem(CLAVE_APAGADO, temporada.id); } catch (e) { /* nada */ }
-  }
 
   // ---------- Arranque ----------
   function iniciar() {
@@ -216,7 +204,7 @@
     if (!sinMovimiento) lluvia = crearLluvia();
     if (temporada.intro) {
       const s = document.createElement('script');
-      s.src = BASE + temporada.intro;
+      s.src = BASE + temporada.intro + '?v=2026103102';
       document.body.appendChild(s);
     }
   }
