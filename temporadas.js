@@ -21,6 +21,8 @@
 
 (function () {
   'use strict';
+  // Carpeta de este archivo, para cargar la entrada animada de la temporada (si tiene).
+  const BASE = (document.currentScript && document.currentScript.src || '').replace(/[^/]*$/, '');
 
   // ---------- Calendario de temporadas ----------
   // desde / hasta en formato 'MM-DD' (inclusive ambos extremos).
@@ -41,6 +43,7 @@
       emojis: ['💀', '🕯️', '🌼', '🍬', '🎃'],
       colorCinta: '#5B2C6F',
       colorTexto: '#FFF4D6',
+      intro: 'intro-muertos.js',   // entrada animada: calavera que cae, papel picado y veladoras
     },
     {
       id: 'navidad',
@@ -211,6 +214,11 @@
   function iniciar() {
     cinta = crearCinta();
     if (!sinMovimiento) lluvia = crearLluvia();
+    if (temporada.intro) {
+      const s = document.createElement('script');
+      s.src = BASE + temporada.intro;
+      document.body.appendChild(s);
+    }
   }
 
   if (document.readyState === 'loading') {
