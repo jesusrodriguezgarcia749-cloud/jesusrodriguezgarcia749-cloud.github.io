@@ -1,0 +1,5 @@
+# Todo el sitio puede indexarse. Cada plataforma decide con sus propias etiquetas qué páginas no se indexan.
+User-agent: *
+Allow: /
+
+Sitemap: https://jesusrodriguezgarcia749-cloud.github.io/raices-y-estrellas/sitemap.xml
